@@ -2,26 +2,138 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+  line-height: 1.65;
+
+  @apply text-gray-700;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply text-gray-900;
+  @apply font-semibold;
+}
+
+input[type="search"],
+input,
+button {
+  -webkit-appearance: none;
+}
+
+.menuIcon {
+  width: 26px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.bar {
+  width: 13px;
+  height: 3px;
+  display: flex;
+  transition: all 0.25s ease-in-out;
+  @apply bg-gray-900;
+  @apply rounded-sm;
+}
+
+.bar:nth-child(2) {
+  width: 26px;
+  margin: 5px 0;
+}
+
+.bar:last-child {
+  width: 18px;
+}
+
+.menuBtn:hover .bar:first-child {
+  width: 26px;
+}
+
+.menuBtn:hover .bar:nth-child(2) {
+  width: 13px;
+}
+
+.menu-item.active:before {
+  content: "";
+  width: 3px;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  @apply bg-gray-900;
+}
+
+/* Main Content */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* ScrollBar Height Calc */
+.cart-scrollbar {
+  max-height: calc(100vh - 233px);
+  -webkit-overflow-scrolling: touch;
+}
+
+.checkout-scrollbar {
+  max-height: calc(100vh - 182px);
+  -webkit-overflow-scrolling: touch;
+}
+
+.details-scrollbar {
+  max-height: calc(100vh - 182px);
+  -webkit-overflow-scrolling: touch;
+}
+
+.menu-scrollbar {
+  max-height: calc(100vh - 138px);
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Carousel Css */
+@screen lg {
+  .custom-react-multi-carousel-dot-list {
+    position: absolute;
+    bottom: 74px;
+    left: 160px;
+    width: auto;
+    right: auto;
+    bottom: 54px;
+    left: 160px;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.overlay {
+  background-color: rgba(0, 0, 0, 0.35);
+  z-index: 21;
+  @apply w-full;
+  @apply h-full;
+  @apply flex;
+  @apply fixed;
+  @apply top-0;
+  @apply left-0;
+}
+
+.component-overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  @apply w-full;
+  @apply h-full;
+  @apply flex;
+  @apply absolute;
+  @apply top-0;
+  @apply left-0;
 }
